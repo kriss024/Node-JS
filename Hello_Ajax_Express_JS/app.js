@@ -28,7 +28,7 @@ app.post("/request", (req, res) => {
 
 // Server Setup
 const server = app.listen(port, hostname, function (err) {
-  if (err) console.log("Error in server setup")
+  if (err) console.log("Error in server setup");
   const host = server.address().address;
   const port = server.address().port;
   console.log(`Server is running at http://${host}:${port}/`);

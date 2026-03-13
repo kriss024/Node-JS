@@ -14,7 +14,7 @@ app.get('/', function(req, res) {
 });
 
 const server = app.listen(port, hostname, function (err) {
-  if (err) console.log("Error in server setup")
+  if (err) console.log("Error in server setup");
   const host = server.address().address;
   const port = server.address().port;
   console.log(`Server running at http://${host}:${port}/`);
