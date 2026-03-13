@@ -66,10 +66,11 @@ app.post("/div", (req, res) => {
 // Server Setup
 const server = app.listen(port, hostname, function (err) {
   if (err) {
-   console.error('Server error:', err);
+   console.error('Server error:', err.message);
    process.exit(1); // Stop the app if it can't start
+  } else {
+   const host = server.address().address;
+   const port = server.address().port;
+   console.log(`Server is running at http://${host}:${port}/`);
   }
-  const host = server.address().address;
-  const port = server.address().port;
-  console.log(`Server is running at http://${host}:${port}/`);
   });
