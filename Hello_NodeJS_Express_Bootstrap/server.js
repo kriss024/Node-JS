@@ -15,7 +15,8 @@ app.use(express.static(static_path));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-let y = 0;
+let y;
+if (y == null) y = 0;
 
 app.get('/', function(req, res) {
   res.sendFile('index.html');
@@ -23,48 +24,48 @@ app.get('/', function(req, res) {
 
 // Handling request
 app.post("/add", (req, res) => {
-  let x = Number(req.body.x);
+  const x = Number(req.body.x);
   y = calculator.add(y, x);
-  console.log(y);
 
-   res.json([{
-      x_recieved: x
-   }])
+   res.json({
+      x_recieved: x,
+      y_recieved: y
+   })
 })
 
 app.post("/subtr", (req, res) => {
-  let x = Number(req.body.x);
+  const x = Number(req.body.x);
   y = calculator.sub(y, x);
-  console.log(y);
 
-   res.json([{
-      x_recieved: x
-   }])
+   res.json({
+      x_recieved: x,
+      y_recieved: y
+   })
 })
 
 app.post("/multi", (req, res) => {
-  let x = Number(req.body.x);
+  const x = Number(req.body.x);
   y = calculator.mult(y, x);
-  console.log(y);
 
-   res.json([{
-      x_recieved: x
-   }])
+   res.json({
+      x_recieved: x,
+      y_recieved: y
+   })
 })
 
 app.post("/div", (req, res) => {
-  let x = Number(req.body.x);
+  const x = Number(req.body.x);
   y = calculator.div(y, x);
-  console.log(y);
 
-   res.json([{
-      x_recieved: x
-   }])
+   res.json({
+      x_recieved: x,
+      y_recieved: y
+   })
 })
 
 // Server Setup
 const server = app.listen(port, hostname, function (err) {
-  if (err) console.log("Error in server setup")
+  if (err) console.log("Error in server setup");
   const host = server.address().address;
   const port = server.address().port;
   console.log(`Server is running at http://${host}:${port}/`);

@@ -22,12 +22,12 @@
 			  <div class="input-group">
 			    <input id="input" type="text" class="form-control" aria-label="With textarea">
 			  </div>
-		  </div>	
+		  </div>
 
 			<div class="form-floating">
 				<p id="result">Result...</p>
 		  </div>
- 
+
 			<div class="form-floating">
 			  <button type="button" class="btn btn-outline-primary btn-space" onclick="add()">+</button>
 			  <button type="button" class="btn btn-outline-primary btn-space" onclick="subtr()">-</button>
@@ -45,52 +45,52 @@
     <script>
 
 			let input_num = 0;
-		
-			const input = document.getElementById("input");
-			input.addEventListener('change', updateValue);
 
-	 		function updateValue(event){
-					input_num = Number(event.target.value);
+			const input = document.getElementById("input");
+			input.addEventListener('input', updateValue);
+
+			function updateValue(event){
+				input_num = Number(event.target.value);
 			}
 
 			function add() {
-	      $.post("/add",
-	         {
-	           x: input_num
-	         },
-	     function (data, status) {
-	        console.log(data);
-	     });
+			$.post("/add",
+				{
+				x: input_num
+				},
+			function (data, status) {
+				document.getElementById("result").innerText = data.y_recieved;
+			});
 			}
 
 			function subtr() {
-	      $.post("/subtr",
-	         {
-	           x: input_num
-	         },
-	     function (data, status) {
-	        console.log(data);
-	     });
+			$.post("/subtr",
+				{
+				x: input_num
+				},
+			function (data, status) {
+				document.getElementById("result").innerText = data.y_recieved;
+			});
 			}
 
 			function multi() {
-	      $.post("/multi",
-	         {
-	           x: input_num
-	         },
-	     function (data, status) {
-	        console.log(data);
-	     });
+			$.post("/multi",
+				{
+				x: input_num
+				},
+			function (data, status) {
+				document.getElementById("result").innerText = data.y_recieved;
+			});
 			}
 
 			function div() {
-	      $.post("/div",
-	         {
-	           x: input_num
-	         },
-	     function (data, status) {
-	        console.log(data);
-	     });
+			$.post("/div",
+				{
+				x: input_num
+				},
+			function (data, status) {
+				document.getElementById("result").innerText = data.y_recieved;
+			});
 			}
 
     </script>
