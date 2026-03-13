@@ -3,10 +3,10 @@ const http = require('http');
 const fs = require('fs');
 
 const hostname = '127.0.0.1';
-const port = 8080;
+const port = 3000;
 
 const server = http.createServer((req, res) => {
- 
+
   fs.readFile('page.html', function(err, html) {
     if (err) {
       res.statusCode = 404;
