@@ -28,9 +28,9 @@ app.post("/add", (req, res) => {
   y = calculator.add(y, x);
 
    res.json({
-      x_recieved: x,
-      y_recieved: y
-   })
+      input: x,
+      result: y
+   });
 })
 
 app.post("/subtr", (req, res) => {
@@ -38,9 +38,9 @@ app.post("/subtr", (req, res) => {
   y = calculator.sub(y, x);
 
    res.json({
-      x_recieved: x,
-      y_recieved: y
-   })
+      input: x,
+      result: y
+   });
 })
 
 app.post("/multi", (req, res) => {
@@ -48,9 +48,9 @@ app.post("/multi", (req, res) => {
   y = calculator.mult(y, x);
 
    res.json({
-      x_recieved: x,
-      y_recieved: y
-   })
+      input: x,
+      result: y
+   });
 })
 
 app.post("/div", (req, res) => {
@@ -58,9 +58,9 @@ app.post("/div", (req, res) => {
   y = calculator.div(y, x);
 
    res.json({
-      x_recieved: x,
-      y_recieved: y
-   })
+      input: x,
+      result: y
+   });
 })
 
 // Server Setup
