@@ -4,10 +4,10 @@ const path = require('path');
 const calculator = require('./module');
 
 const app = express();
-const port = process.env.PORT || 8080;
-const hostname = 'localhost';
+const port = process.env.PORT || 3000
+const hostname = '127.0.0.1';
 
-// Setting path for public directory 
+// Setting path for public directory
 const static_path = path.join(__dirname, 'public')
 app.use(express.static(static_path));
 
@@ -21,7 +21,7 @@ app.get('/', function(req, res) {
   res.sendFile('index.html');
 });
 
-// Handling request 
+// Handling request
 app.post("/add", (req, res) => {
   let x = Number(req.body.x);
   y = calculator.add(y, x);
@@ -61,11 +61,11 @@ app.post("/div", (req, res) => {
       x_recieved: x
    }])
 })
-  
+
 // Server Setup
 const server = app.listen(port, hostname, function (err) {
-  if (err) console.log("Error in server setup")  
-  const host = server.address().address;  
-  const port = server.address().port;  
-  console.log(`Server is running at http://${host}:${port}/`);  
+  if (err) console.log("Error in server setup")
+  const host = server.address().address;
+  const port = server.address().port;
+  console.log(`Server is running at http://${host}:${port}/`);
   });
