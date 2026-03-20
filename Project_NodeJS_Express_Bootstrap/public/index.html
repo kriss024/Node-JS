@@ -43,6 +43,10 @@
 
     <!-- Optional JavaScript; choose one of the two! -->
     <script>
+			let x = 0;
+			let y = 0;
+			let input_num = 0;
+
 			const input = document.getElementById("input");
 			input.addEventListener('input', updateValue);
 
@@ -50,55 +54,54 @@
 				input_num = Number(event.target.value);
 			}
 
-			let input_num = 0;
-
-			function clearInput() {
-				input.value = "";
-}
-
 			function add() {
 			$.post("/add",
-				{ x: input_num },
+				{ x: input_num, y: y },
 			function (data, status) {
-				document.getElementById("result").innerText = data.result;
-				clearInput();
+				y = data.result;
+				document.getElementById("result").innerText = y;
+				input.value = "";
 			});
 			}
 
 			function subtr() {
 			$.post("/subtr",
-				{ x: input_num },
+				{ x: input_num, y: y },
 			function (data, status) {
-				document.getElementById("result").innerText = data.result;
-				clearInput();
+				y = data.result;
+				document.getElementById("result").innerText = y;
+				input.value = "";
 			});
 			}
 
 			function multi() {
 			$.post("/multi",
-				{ x: input_num },
+				{ x: input_num, y: y },
 			function (data, status) {
-				document.getElementById("result").innerText = data.result;
-				clearInput();
+				y = data.result;
+				document.getElementById("result").innerText = y;
+				input.value = "";
 			});
 			}
 
 			function div() {
 			$.post("/div",
-				{ x: input_num },
+				{ x: input_num, y: y },
 			function (data, status) {
-				document.getElementById("result").innerText = data.result;
-				clearInput();
+				y = data.result;
+				document.getElementById("result").innerText = y;
+				input.value = "";
 			});
 			}
 
 			function equals() {
 			$.get("/result",
-				{ x: input_num },
+				{ x: input_num, y: y },
 			function (data, status) {
-				document.getElementById("result").innerText = data.result;
-				input_num = data.result;
-				input.value = data.result;
+				y = data.result;
+				document.getElementById("result").innerText = y.toString();
+				input.value = y.toString();
+				x = y;
 			});
 			}
 
