@@ -63,6 +63,15 @@ app.post("/div", (req, res) => {
    });
 })
 
+app.get('/result', function(req, res) {
+   const x = Number(req.body.x);
+
+   res.json({
+      input: y,
+      result: y
+   });
+});
+
 // Server Setup
 const server = app.listen(port, hostname, function (err) {
   if (err) {

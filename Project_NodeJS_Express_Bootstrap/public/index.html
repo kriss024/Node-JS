@@ -8,14 +8,14 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
-    <title>Mini Calculator</title>
+    <title>Node.JS Calculator</title>
 
     <!-- Custom styles for this template -->
     <link href="page.css" rel="stylesheet">
   </head>
   <body class="text-center">
     <main class="form-signin">
-	  	<h2>JavaScript Calculator</h2>
+	  	<h2>Node.JS Calculator</h2>
 		  <p>Please enter the value in the field</p>
 
 			<div class="form-floating">
@@ -25,7 +25,7 @@
 		  </div>
 
 			<div class="form-floating">
-				<p id="result">Result...</p>
+				<p id="result">?</p>
 		  </div>
 
 			<div class="form-floating">
@@ -33,7 +33,7 @@
 			  <button type="button" class="btn btn-outline-primary btn-space" onclick="subtr()">-</button>
 			  <button type="button" class="btn btn-outline-primary btn-space" onclick="multi()">*</button>
 			  <button type="button" class="btn btn-outline-primary btn-space" onclick="div()">/</button>
-			  <button type="button" class="btn btn-success btn-space">=</button>
+			  <button type="button" class="btn btn-success btn-space" onclick="equals()">=</button>
 			</div>
 
     </main>
@@ -43,9 +43,6 @@
 
     <!-- Optional JavaScript; choose one of the two! -->
     <script>
-
-			let input_num = 0;
-
 			const input = document.getElementById("input");
 			input.addEventListener('input', updateValue);
 
@@ -53,43 +50,55 @@
 				input_num = Number(event.target.value);
 			}
 
+			let input_num = 0;
+
+			function clearInput() {
+				input.value = "";
+}
+
 			function add() {
 			$.post("/add",
-				{
-				x: input_num
-				},
+				{ x: input_num },
 			function (data, status) {
 				document.getElementById("result").innerText = data.result;
+				clearInput();
 			});
 			}
 
 			function subtr() {
 			$.post("/subtr",
-				{
-				x: input_num
-				},
+				{ x: input_num },
 			function (data, status) {
 				document.getElementById("result").innerText = data.result;
+				clearInput();
 			});
 			}
 
 			function multi() {
 			$.post("/multi",
-				{
-				x: input_num
-				},
+				{ x: input_num },
 			function (data, status) {
 				document.getElementById("result").innerText = data.result;
+				clearInput();
 			});
 			}
 
 			function div() {
 			$.post("/div",
-				{
-				x: input_num
-				},
+				{ x: input_num },
 			function (data, status) {
 				document.getElementById("result").innerText = data.result;
+				clearInput();
+			});
+			}
+
+			function equals() {
+			$.get("/result",
+				{ x: input_num },
+			function (data, status) {
+				document.getElementById("result").innerText = data.result;
+				input_num = data.result;
+				input.value = data.result;
 			});
 			}
 
