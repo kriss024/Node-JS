@@ -44,3 +44,6 @@ chmod u+x app.js
 
 # If your main Node.js application file is app.js, you can call it by typing:
 node app.js
+
+# Clean/Locked Installation is a command designed for automated environments (CI/CD pipelines, testing, deployment) to install dependencies quickly and consistently.
+npm ci
