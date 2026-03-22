@@ -68,7 +68,6 @@
 			function (data, status) {
 				y = data.result;
 				document.getElementById("result").innerText = y;
-				input.value = "";
 			});
 			}
 
@@ -78,7 +77,6 @@
 			function (data, status) {
 				y = data.result;
 				document.getElementById("result").innerText = y;
-				input.value = "";
 			});
 			}
 
@@ -88,7 +86,6 @@
 			function (data, status) {
 				y = data.result;
 				document.getElementById("result").innerText = y;
-				input.value = "";
 			});
 			}
 
@@ -98,7 +95,6 @@
 			function (data, status) {
 				y = data.result;
 				document.getElementById("result").innerText = y;
-				input.value = "";
 			});
 			}
 
@@ -107,9 +103,9 @@
 				{ x: x, y: y },
 			function (data, status) {
 				y = data.result;
+				x = y;
 				document.getElementById("result").innerText = y;
 				input.value = y;
-				x = y;
 			});
 			}
 
