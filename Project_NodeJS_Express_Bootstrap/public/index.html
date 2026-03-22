@@ -43,8 +43,7 @@
 
     <!-- Optional JavaScript; choose one of the two! -->
     <script>
-			let y = 0;
-			let x = 0;
+			var x, y;
 
 			const input = document.getElementById("input");
 			input.addEventListener('input', updateValue);
@@ -52,6 +51,16 @@
 			function updateValue(event){
 				x = Number(event.target.value);
 			}
+
+			function init() {
+			$.get("/init", function(data) {
+				x = data.init_x;
+				y = data.init_y;
+				document.getElementById("result").innerText = y;
+				input.value = y;
+			});
+			}
+			init();
 
 			function add() {
 			$.post("/add",

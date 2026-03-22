@@ -19,6 +19,17 @@ app.get('/', function(req, res) {
 });
 
 // Handling request
+app.get('/init', (req, res) => {
+   const x = 5.0;
+   const y = 5.0;
+
+   res.json({
+      init_x: x,
+      init_y: y
+   });
+});
+
+
 app.post("/add", (req, res) => {
   const x = Number(req.body.x);
   const y = Number(req.body.y);
@@ -70,7 +81,7 @@ app.post("/div", (req, res) => {
 app.post("/result", (req, res) => {
   const x = Number(req.body.x);
   const y = Number(req.body.y);
-  result = y;
+  var result = y;
 
    res.json({
       input_x: x,
