@@ -22,56 +22,62 @@ app.get('/', function(req, res) {
 app.post("/add", (req, res) => {
   const x = Number(req.body.x);
   const y = Number(req.body.y);
-  result_y = calculator.add(y, x);
+  result = calculator.add(y, x);
 
    res.json({
-      input: x,
-      result: result_y
+      input_x: x,
+      input_y: y,
+      result: result
    });
 })
 
 app.post("/subtr", (req, res) => {
   const x = Number(req.body.x);
   const y = Number(req.body.y);
-  result_y = calculator.sub(y, x);
+  result = calculator.sub(y, x);
 
    res.json({
-      input: x,
-      result: result_y
+      input_x: x,
+      input_y: y,
+      result: result
    });
 })
 
 app.post("/multi", (req, res) => {
   const x = Number(req.body.x);
   const y = Number(req.body.y);
-  result_y = calculator.mult(y, x);
+  result = calculator.mult(y, x);
 
    res.json({
-      input: x,
-      result: result_y
+      input_x: x,
+      input_y: y,
+      result: result
    });
 })
 
 app.post("/div", (req, res) => {
   const x = Number(req.body.x);
   const y = Number(req.body.y);
-  result_y = calculator.div(y, x);
+  result = calculator.div(y, x);
 
    res.json({
-      input: x,
-      result: result_y
+      input_x: x,
+      input_y: y,
+      result: result
    });
 })
 
-app.get('/result', function(req, res) {
+app.post("/result", (req, res) => {
   const x = Number(req.body.x);
-  const result_y = Number(req.body.y);
+  const y = Number(req.body.y);
+  result = y;
 
    res.json({
-      input: x,
-      result: result_y
+      input_x: x,
+      input_y: y,
+      result: result
    });
-});
+})
 
 // Server Setup
 const server = app.listen(port, hostname, function (err) {

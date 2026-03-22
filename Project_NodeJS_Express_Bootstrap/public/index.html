@@ -43,20 +43,19 @@
 
     <!-- Optional JavaScript; choose one of the two! -->
     <script>
-			let x = 0;
 			let y = 0;
-			let input_num = 0;
+			let x = 0;
 
 			const input = document.getElementById("input");
 			input.addEventListener('input', updateValue);
 
 			function updateValue(event){
-				input_num = Number(event.target.value);
+				x = Number(event.target.value);
 			}
 
 			function add() {
 			$.post("/add",
-				{ x: input_num, y: y },
+				{ x: x, y: y },
 			function (data, status) {
 				y = data.result;
 				document.getElementById("result").innerText = y;
@@ -66,7 +65,7 @@
 
 			function subtr() {
 			$.post("/subtr",
-				{ x: input_num, y: y },
+				{ x: x, y: y },
 			function (data, status) {
 				y = data.result;
 				document.getElementById("result").innerText = y;
@@ -76,7 +75,7 @@
 
 			function multi() {
 			$.post("/multi",
-				{ x: input_num, y: y },
+				{ x: x, y: y },
 			function (data, status) {
 				y = data.result;
 				document.getElementById("result").innerText = y;
@@ -86,7 +85,7 @@
 
 			function div() {
 			$.post("/div",
-				{ x: input_num, y: y },
+				{ x: x, y: y },
 			function (data, status) {
 				y = data.result;
 				document.getElementById("result").innerText = y;
@@ -95,12 +94,12 @@
 			}
 
 			function equals() {
-			$.get("/result",
-				{ x: input_num, y: y },
+			$.post("/result",
+				{ x: x, y: y },
 			function (data, status) {
 				y = data.result;
-				document.getElementById("result").innerText = y.toString();
-				input.value = y.toString();
+				document.getElementById("result").innerText = y;
+				input.value = y;
 				x = y;
 			});
 			}
