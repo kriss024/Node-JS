@@ -11,6 +11,7 @@ function mult(x, y) {
 }
 
 function div(x, y) {
+  if (y === 0) throw new Error("Division by zero");
   return x / y;
 }
 

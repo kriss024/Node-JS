@@ -15,7 +15,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.get('/', function(req, res) {
-  res.sendFile('index.html');
+   res.sendFile(path.join(static_path, 'index.html'));
 });
 
 // Handling request
@@ -33,7 +33,7 @@ app.get('/init', (req, res) => {
 app.post("/add", (req, res) => {
   const x = Number(req.body.x);
   const y = Number(req.body.y);
-  result = calculator.add(y, x);
+  const result = calculator.add(y, x);
 
    res.json({
       input_x: x,
@@ -45,7 +45,7 @@ app.post("/add", (req, res) => {
 app.post("/subtr", (req, res) => {
   const x = Number(req.body.x);
   const y = Number(req.body.y);
-  result = calculator.sub(y, x);
+  const result = calculator.sub(y, x);
 
    res.json({
       input_x: x,
@@ -57,7 +57,7 @@ app.post("/subtr", (req, res) => {
 app.post("/multi", (req, res) => {
   const x = Number(req.body.x);
   const y = Number(req.body.y);
-  result = calculator.mult(y, x);
+  const result = calculator.mult(y, x);
 
    res.json({
       input_x: x,
@@ -67,21 +67,25 @@ app.post("/multi", (req, res) => {
 })
 
 app.post("/div", (req, res) => {
-  const x = Number(req.body.x);
-  const y = Number(req.body.y);
-  result = calculator.div(y, x);
+   try {
+      const x = Number(req.body.x);
+      const y = Number(req.body.y);
+      const result = calculator.div(y, x);
 
-   res.json({
-      input_x: x,
-      input_y: y,
-      result: result
-   });
+      res.json({
+         input_x: x,
+         input_y: y,
+         result: result
+      });
+    } catch (e) {
+      res.status(400).json({ error: e.message });
+    }
 })
 
 app.post("/result", (req, res) => {
   const x = Number(req.body.x);
   const y = Number(req.body.y);
-  var result = y;
+  const result = y;
 
    res.json({
       input_x: x,
@@ -89,7 +93,6 @@ app.post("/result", (req, res) => {
       result: result
    });
 })
-
 // Server Setup
 const server = app.listen(port, hostname, function (err) {
   if (err) {
