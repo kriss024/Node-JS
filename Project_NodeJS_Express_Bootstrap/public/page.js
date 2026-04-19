@@ -1,4 +1,4 @@
-var x, y;
+let x, y;
 
 const input = document.getElementById("input");
 input.addEventListener('input', updateValue);
@@ -62,4 +62,48 @@ function (data, status) {
     document.getElementById("result").innerText = y;
     input.value = y;
 });
+}
+
+function square() {
+$.post("/square",
+    { x: x, y: y },
+function (data, status) {
+    y = data.result;
+    document.getElementById("result").innerText = y;
+});
+}
+function sqrt() {
+$.post("/sqrt",
+    { x: x, y: y },
+function (data, status) {
+    y = data.result;
+    document.getElementById("result").innerText = y;
+});
+}
+function reciprocal() {
+$.post("/reciprocal",
+    { x: x, y: y },
+function (data, status) {
+    y = data.result;
+    document.getElementById("result").innerText = y;
+});
+}
+function exp() {
+$.post("/exp",
+    { x: x, y: y },
+function (data, status) {
+    y = data.result;
+    document.getElementById("result").innerText = y;
+});
+}
+
+function all_clear () {
+    $.post("/result",
+        { x: 0, y: 0 },
+    function (data, status) {
+        y = data.result;
+        x = y;
+        document.getElementById("result").innerText = y;
+        input.value = y;
+    });
 }

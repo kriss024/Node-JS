@@ -93,6 +93,63 @@ app.post("/result", (req, res) => {
       result: result
    });
 })
+
+app.post("/square", (req, res) => {
+   const x = Number(req.body.x);
+   const y = Number(req.body.y);
+   const result = calculator.square(x);
+
+   res.json({
+      input_x: x,
+      input_y: y,
+      result: result
+   });
+});
+
+app.post("/sqrt", (req, res) => {
+   try {
+      const x = Number(req.body.x);
+      const y = Number(req.body.y);
+      const result = calculator.sqrt(x);
+
+      res.json({
+         input_x: x,
+         input_y: y,
+         result: result
+      });
+   } catch (e) {
+      res.status(400).json({ error: e.message });
+   }
+});
+
+app.post("/reciprocal", (req, res) => {
+   try {
+      const x = Number(req.body.x);
+      const y = Number(req.body.y);
+      const result = calculator.reciprocal(x);
+
+      res.json({
+         input_x: x,
+         input_y: y,
+         result: result
+      });
+   } catch (e) {
+      res.status(400).json({ error: e.message });
+   }
+});
+
+app.post("/exp", (req, res) => {
+   const x = Number(req.body.x);
+   const y = Number(req.body.y);
+   const result = calculator.exp(x);
+
+   res.json({
+      input_x: x,
+      input_y: y,
+      result: result
+   });
+});
+
 // Server Setup
 const server = app.listen(port, hostname, function (err) {
   if (err) {

@@ -8,14 +8,14 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
-    <title>Node.JS Calculator</title>
+    <title>Server-side Calculator</title>
 
     <!-- Custom styles for this template -->
     <link href="page.css" rel="stylesheet">
   </head>
   <body class="text-center">
     <main class="form-signin">
-	  	<h2>Node.JS Calculator</h2>
+	  	<h2>Server-side Calculator</h2>
 		  <p>Please enter the value in the field</p>
 
 			<div class="form-floating">
@@ -29,12 +29,23 @@
 		  </div>
 
 			<div class="form-floating">
-			  <button type="button" class="btn btn-outline-primary btn-space" onclick="add()">+</button>
-			  <button type="button" class="btn btn-outline-primary btn-space" onclick="subtr()">-</button>
-			  <button type="button" class="btn btn-outline-primary btn-space" onclick="multi()">*</button>
-			  <button type="button" class="btn btn-outline-primary btn-space" onclick="div()">/</button>
-			  <button type="button" class="btn btn-success btn-space" onclick="equals()">=</button>
-			</div>
+        <table class="button-frame">
+          <tr>
+            <td><button type="button" class="btn btn-outline-primary" onclick="add()">+</button></td>
+            <td><button type="button" class="btn btn-outline-primary" onclick="subtr()">-</button></td>
+            <td><button type="button" class="btn btn-outline-primary" onclick="multi()">*</button></td>
+            <td><button type="button" class="btn btn-outline-primary" onclick="div()">/</button></td>
+            <td><button type="button" class="btn btn-success" onclick="equals()">=</button></td>
+          </tr>
+          <tr>
+            <td><button type="button" class="btn btn-outline-primary" onclick="square()">x^2</button></td>
+            <td><button type="button" class="btn btn-outline-primary" onclick="sqrt()">Sqrt</button></td>
+            <td><button type="button" class="btn btn-outline-primary" onclick="reciprocal()">1/x</button></td>
+            <td><button type="button" class="btn btn-outline-primary" onclick="exp()">e^x</button></td>
+            <td><button type="button" class="btn btn-dark" onclick="all_clear()">AC</button></td>
+          </tr>
+        </table>
+      </div>
 
     </main>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
