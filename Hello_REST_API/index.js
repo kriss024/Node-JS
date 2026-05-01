@@ -1,13 +1,13 @@
 const express = require('express');
 const path = require('path');
-const app = express();
 
+const app = express();
 const port = process.env.PORT || 3000;
 const hostname = '127.0.0.1';
 
 // Setting path for public directory
-const static_path = path.join(__dirname, 'public')
-app.use(express.static(static_path));
+const staticPath = path.join(__dirname, 'public');
+app.use(express.static(staticPath));
 
 // Middleware for parsing JSON
 app.use(express.json());
@@ -65,7 +65,7 @@ app.delete('/api/users/:id', (req, res) => {
   res.json(deletedUser[0]);
 });
 
-// Server Setup
+// Server setup
 const server = app.listen(port, hostname, function (err) {
     if (err) {
      console.error('Server error:', err);
