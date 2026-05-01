@@ -28,10 +28,14 @@ app.get('/api/users', (req, res) => {
 });
 
 // GET - Retrieve a specific user
-app.get('/api/users/:id', (req, res) => {
-  const user = users.find(u => u.id === parseInt(req.params.id));
-  if (!user) return res.status(404).json({ message: 'User not found' });
-  res.json(user);
+app.get('/users/:id', (req, res) => {
+  try {
+    const user = users.find((u) => u.id === parseInt(req.params.id));
+    if (!user) throw new Error('User not found');
+    res.json(user);
+  } catch (error) {
+    res.status(404).json({ message: error.message });
+  }
 });
 
 // POST - Create a new user
@@ -47,22 +51,25 @@ app.post('/api/users', (req, res) => {
 
 // PUT - Update a user completely
 app.put('/api/users/:id', (req, res) => {
-  const user = users.find(u => u.id === parseInt(req.params.id));
-  if (!user) return res.status(404).json({ message: 'User not found' });
-
-  user.name = req.body.name;
-  user.email = req.body.email;
-
-  res.json(user);
+  const user = users.find((u) => u.id === parseInt(req.params.id));
+  if (user) {
+    user.name = req.body.name;
+    user.email = req.body.email;
+    res.json(user);
+  } else {
+    res.status(404).send('User not found');
+  }
 });
 
 // DELETE - Remove a user
 app.delete('/api/users/:id', (req, res) => {
-  const userIndex = users.findIndex(u => u.id === parseInt(req.params.id));
-  if (userIndex === -1) return res.status(404).json({ message: 'User not found' });
-
-  const deletedUser = users.splice(userIndex, 1);
-  res.json(deletedUser[0]);
+  const userIndex = users.findIndex((u) => u.id === parseInt(req.params.id));
+  if (userIndex !== -1) {
+    users.splice(userIndex, 1); // Remove the user from the array
+    res.send('User deleted');
+  } else {
+    res.status(404).send('User not found');
+  }
 });
 
 // Server setup
